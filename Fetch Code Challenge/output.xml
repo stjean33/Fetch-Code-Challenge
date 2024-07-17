@@ -1,0 +1,1674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-17T04:34:27.336689" rpa="false" schemaversion="5">
+<suite id="s1" name="Codechallenge" source="c:\Users\scharles\Fetch Code Challenge\robot\codechallenge.robot">
+<test id="s1-t1" name="Find Fake Gold Bar" line="12">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:27.673981" level="INFO">Opening browser 'chrome' to base url 'http://sdetchallenge.fetch.com'.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-07-17T04:34:27.672963" elapsed="5.563313"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Repeat Until Fake Bar Found" owner="codechallenge">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.251585" level="INFO">Attempt 0 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.250403" elapsed="0.001770"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.254168" level="INFO">${random_num1} = 2</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.253017" elapsed="0.001151"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.256164" level="INFO">${random_num2} = 2</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.255168" elapsed="0.000996"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.259513" level="INFO">Typing text '2' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.258332" elapsed="0.173161"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.432547" level="INFO">Typing text '2' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.431493" elapsed="0.116160"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:33.257282" elapsed="0.290584"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.549646" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.549646" elapsed="0.068795"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:33.548649" elapsed="0.069792"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.681912" level="INFO">@{elements} = [ ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.618441" elapsed="0.063471"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.683784" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.683164" elapsed="0.000620"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.684781" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.685778" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.685778" elapsed="0.000997"/>
+</kw>
+<var name="${element}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:33.684781" elapsed="0.001994"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:33.683784" elapsed="0.002991"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.687772" level="INFO">${expected_text} = [2] &gt; [2]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.687410" elapsed="0.001359"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.689767" level="INFO">Expected text: [2] &gt; [2]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.688984" elapsed="0.000783"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.691763" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.693757" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.693757" elapsed="0.001001"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.695751" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:33.697001" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:33.692760" elapsed="0.004986"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:33.692760" elapsed="0.004986"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:33.690764" elapsed="0.006982"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:33.689767" elapsed="0.007979"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.699742" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.698744" elapsed="0.069717"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:33.697746" elapsed="0.071623"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2024-07-17T04:34:33.249181" elapsed="0.520377"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.771513" level="INFO">Attempt 1 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.771161" elapsed="0.001199"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.774357" level="INFO">${random_num1} = 8</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.772360" elapsed="0.001997"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:33.776377" level="INFO">${random_num2} = 7</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.775353" elapsed="0.001024"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.778979" level="INFO">Typing text '8' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.778343" elapsed="0.118222"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:33.897561" level="INFO">Typing text '7' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.896565" elapsed="0.104743"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:33.776377" elapsed="0.224931"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.003304" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.002304" elapsed="0.056855"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:34.002304" elapsed="0.057847"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.070123" level="INFO">@{elements} = [ ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.060151" elapsed="0.009972"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.072120" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.071213" elapsed="0.000907"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.073115" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.074116" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.074116" elapsed="0.000000"/>
+</kw>
+<var name="${element}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:34.073115" elapsed="0.001001"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:34.072120" elapsed="0.002990"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.076108" level="INFO">${expected_text} = [8] &gt; [7]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.075110" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.077105" level="INFO">Expected text: [8] &gt; [7]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.076108" elapsed="0.000997"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.078102" elapsed="0.000834"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.079099" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.080099" elapsed="0.000291"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.080390" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.081126" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:34.079099" elapsed="0.002027"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:34.079099" elapsed="0.002027"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:34.078102" elapsed="0.003024"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:34.077105" elapsed="0.004986"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.084094" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.083089" elapsed="0.114807"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:34.082330" elapsed="0.115566"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2024-07-17T04:34:33.770368" elapsed="0.427528"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.199888" level="INFO">Attempt 2 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.198892" elapsed="0.000996"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.200885" level="INFO">${random_num1} = 6</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.199888" elapsed="0.000997"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.200885" level="INFO">${random_num2} = 7</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.200885" elapsed="0.000000"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.202884" level="INFO">Typing text '6' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.201884" elapsed="0.104504"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.307675" level="INFO">Typing text '7' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.306388" elapsed="0.100304"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:34.201884" elapsed="0.205774"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.410651" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.409653" elapsed="0.052524"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:34.408947" elapsed="0.053230"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.473154" level="INFO">@{elements} = [ ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.462177" elapsed="0.010977"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.474144" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.473154" elapsed="0.000990"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.476324" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.477136" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.477136" elapsed="0.000997"/>
+</kw>
+<var name="${element}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:34.475142" elapsed="0.002991"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:34.475142" elapsed="0.002991"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.479131" level="INFO">${expected_text} = [6] &gt; [7]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.479131" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.480128" level="INFO">Expected text: [6] &gt; [7]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.480128" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.481125" elapsed="0.000998"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.483120" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.483120" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.484118" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.484118" elapsed="0.000997"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:34.482123" elapsed="0.002992"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:34.482123" elapsed="0.002992"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:34.481125" elapsed="0.003990"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:34.481125" elapsed="0.003990"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.487752" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.487294" elapsed="0.046692"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:34.486113" elapsed="0.047873"/>
+</kw>
+<var name="${i}">2</var>
+<status status="PASS" start="2024-07-17T04:34:34.198892" elapsed="0.335094"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.534982" level="INFO">Attempt 3 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.534982" elapsed="0.000997"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.535979" level="INFO">${random_num1} = 8</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.535979" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.537117" level="INFO">${random_num2} = 5</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.537117" elapsed="0.000857"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.540221" level="INFO">Typing text '8' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.538971" elapsed="0.112030"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.652005" level="INFO">Typing text '5' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.652005" elapsed="0.115257"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:34.537974" elapsed="0.230310"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.769298" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.769298" elapsed="0.054821"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:34.768284" elapsed="0.056524"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.835654" level="INFO">@{elements} = [ ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.825106" elapsed="0.010548"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.836913" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.836651" elapsed="0.000262"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.838649" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.838649" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.838649" elapsed="0.000994"/>
+</kw>
+<var name="${element}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:34.837649" elapsed="0.001994"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:34.837649" elapsed="0.001994"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.840640" level="INFO">${expected_text} = [8] &gt; [5]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.839643" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.841986" level="INFO">Expected text: [8] &gt; [5]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.841638" elapsed="0.000998"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.843632" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.844629" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.844629" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.845627" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:34.845627" elapsed="0.000997"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:34.843632" elapsed="0.002992"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:34.843632" elapsed="0.002992"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:34.842636" elapsed="0.003988"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:34.842636" elapsed="0.003988"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.847623" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.847623" elapsed="0.111616"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:34.846624" elapsed="0.113331"/>
+</kw>
+<var name="${i}">3</var>
+<status status="PASS" start="2024-07-17T04:34:34.534982" elapsed="0.424973"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.961947" level="INFO">Attempt 4 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.960954" elapsed="0.000993"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.962944" level="INFO">${random_num1} = 6</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.962944" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:34.963941" level="INFO">${random_num2} = 8</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.963941" elapsed="0.000998"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:34.966933" level="INFO">Typing text '6' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:34.965938" elapsed="0.112984"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.080918" level="INFO">Typing text '8' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.079950" elapsed="0.106681"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:34.964939" elapsed="0.222691"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.190623" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.189643" elapsed="0.045860"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:35.188638" elapsed="0.047862"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.248467" level="INFO">@{elements} = [ ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.236500" elapsed="0.011967"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.249543" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.249543" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.250461" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.252201" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.252455" elapsed="0.000000"/>
+</kw>
+<var name="${element}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:35.250461" elapsed="0.002994"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:35.249543" elapsed="0.004388"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.255448" level="INFO">${expected_text} = [6] &gt; [8]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.254530" elapsed="0.000918"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.256445" level="INFO">Expected text: [6] &gt; [8]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.255448" elapsed="0.000997"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.257442" elapsed="0.000998"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.258440" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.259437" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.259437" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.260435" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:35.258440" elapsed="0.001995"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:35.258440" elapsed="0.002769"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:35.257442" elapsed="0.003767"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:35.257442" elapsed="0.003990"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.262430" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.261432" elapsed="0.053346"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:35.261432" elapsed="0.053346"/>
+</kw>
+<var name="${i}">4</var>
+<status status="PASS" start="2024-07-17T04:34:34.960954" elapsed="0.354821"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.316771" level="INFO">Attempt 5 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.315775" elapsed="0.000996"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.317769" level="INFO">${random_num1} = 1</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.316771" elapsed="0.000998"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.318767" level="INFO">${random_num2} = 4</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.317769" elapsed="0.000998"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.320401" level="INFO">Typing text '1' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.319763" elapsed="0.100550"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.422208" level="INFO">Typing text '4' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.421693" elapsed="0.107364"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:35.318767" elapsed="0.210290"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.530924" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.529924" elapsed="0.050865"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:35.529924" elapsed="0.050865"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.593758" level="INFO">@{elements} = [ ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.581787" elapsed="0.011971"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.594967" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.594967" elapsed="0.000781"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.595748" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.596746" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.596746" elapsed="0.000000"/>
+</kw>
+<var name="${element}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:35.595748" elapsed="0.000998"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:35.595748" elapsed="0.001995"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.597743" level="INFO">${expected_text} = [1] &gt; [4]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.597743" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.599739" level="INFO">Expected text: [1] &gt; [4]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.598968" elapsed="0.000771"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.600736" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.601732" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.601732" elapsed="0.001000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.602732" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:35.603318" elapsed="0.000409"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:35.601732" elapsed="0.001995"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:35.601732" elapsed="0.001995"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:35.600736" elapsed="0.002991"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:35.599739" elapsed="0.003988"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.605723" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.605723" elapsed="0.103687"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:35.604725" elapsed="0.105495"/>
+</kw>
+<var name="${i}">5</var>
+<status status="PASS" start="2024-07-17T04:34:35.315775" elapsed="0.394445"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.712175" level="INFO">Attempt 6 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.711266" elapsed="0.000909"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.713175" level="INFO">${random_num1} = 6</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.712175" elapsed="0.001000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:35.714170" level="INFO">${random_num2} = 0</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.714170" elapsed="0.000000"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.716166" level="INFO">Typing text '6' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.715168" elapsed="0.114008"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.831164" level="INFO">Typing text '0' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.830325" elapsed="0.108583"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:35.715168" elapsed="0.224732"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:35.941895" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.941895" elapsed="0.053307"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:35.940927" elapsed="0.054818"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.007170" level="INFO">@{elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.27")&gt; ]</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:35.996199" elapsed="0.010971"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.009163" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.008170" elapsed="0.000993"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.032102" level="INFO">${text} = [1] = [4]</msg>
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.010160" elapsed="0.021942"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.033099" level="INFO">Weighing result element text: [1] = [4]</msg>
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.032102" elapsed="0.000997"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.033099" elapsed="0.000997"/>
+</kw>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.27")&gt;</var>
+<status status="PASS" start="2024-07-17T04:34:36.010160" elapsed="0.023936"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="PASS" start="2024-07-17T04:34:36.009163" elapsed="0.024933"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.035096" level="INFO">${expected_text} = [6] &gt; [0]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.034096" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.036093" level="INFO">Expected text: [6] &gt; [0]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.035096" elapsed="0.001465"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.038069" level="INFO">Checking text: [1] = [4]</msg>
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.038069" elapsed="0.000997"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.040066" elapsed="0.000996"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.042060" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.043056" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.044054" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:36.039066" elapsed="0.004988"/>
+</branch>
+<status status="PASS" start="2024-07-17T04:34:36.039066" elapsed="0.004988"/>
+</if>
+<var name="${text}">[1] = [4]</var>
+<status status="PASS" start="2024-07-17T04:34:36.037066" elapsed="0.006988"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="PASS" start="2024-07-17T04:34:36.036561" elapsed="0.008494"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.047045" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.046049" elapsed="0.065349"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:36.045055" elapsed="0.067343"/>
+</kw>
+<var name="${i}">6</var>
+<status status="PASS" start="2024-07-17T04:34:35.711266" elapsed="0.401132"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.113393" level="INFO">Attempt 7 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.113393" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.114392" level="INFO">${random_num1} = 2</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.114392" elapsed="0.000998"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.116386" level="INFO">${random_num2} = 0</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.115390" elapsed="0.000996"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.118380" level="INFO">Typing text '2' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.117382" elapsed="0.106675"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.225054" level="INFO">Typing text '0' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.224057" elapsed="0.098914"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:36.116386" elapsed="0.207590"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.325746" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.324967" elapsed="0.044439"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:36.323976" elapsed="0.046431"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.384377" level="INFO">@{elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.27")&gt; | &lt;selenium.webdr...</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.370407" elapsed="0.014401"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.385365" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.384808" elapsed="0.000557"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.397332" level="INFO">${text} = [1] = [4]</msg>
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.386508" elapsed="0.010824"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.398330" level="INFO">Weighing result element text: [1] = [4]</msg>
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.398330" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.398330" elapsed="0.000997"/>
+</kw>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.27")&gt;</var>
+<status status="PASS" start="2024-07-17T04:34:36.385365" elapsed="0.013962"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.455919" level="INFO">${text} = [6] = [0]</msg>
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.399327" elapsed="0.056592"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.457161" level="INFO">Weighing result element text: [6] = [0]</msg>
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.457161" elapsed="0.001005"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.458166" elapsed="0.000994"/>
+</kw>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.28")&gt;</var>
+<status status="PASS" start="2024-07-17T04:34:36.399327" elapsed="0.059833"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="PASS" start="2024-07-17T04:34:36.385365" elapsed="0.073795"/>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.460678" level="INFO">${expected_text} = [2] &gt; [0]</msg>
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.460158" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.461155" level="INFO">Expected text: [2] &gt; [0]</msg>
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.461155" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.463151" level="INFO">Checking text: [1] = [4]</msg>
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.462152" elapsed="0.000999"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.464147" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.464147" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.464147" elapsed="0.000997"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.465144" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:36.463775" elapsed="0.001369"/>
+</branch>
+<status status="PASS" start="2024-07-17T04:34:36.463151" elapsed="0.001993"/>
+</if>
+<var name="${text}">[1] = [4]</var>
+<status status="PASS" start="2024-07-17T04:34:36.462152" elapsed="0.002992"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.467140" level="INFO">Checking text: [6] = [0]</msg>
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.467140" elapsed="0.000998"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.469211" elapsed="0.000921"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.470559" elapsed="0.000993"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.471552" elapsed="0.000574"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:36.472126" elapsed="0.001064"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:36.468138" elapsed="0.005052"/>
+</branch>
+<status status="PASS" start="2024-07-17T04:34:36.468138" elapsed="0.005052"/>
+</if>
+<var name="${text}">[6] = [0]</var>
+<status status="PASS" start="2024-07-17T04:34:36.466224" elapsed="0.006966"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="PASS" start="2024-07-17T04:34:36.462152" elapsed="0.011968"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.476115" level="INFO">Clicking element 'xpath=//button[@id="reset"]'.</msg>
+<arg>${RESET_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.475118" elapsed="0.057846"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:36.474479" elapsed="0.058485"/>
+</kw>
+<var name="${i}">7</var>
+<status status="PASS" start="2024-07-17T04:34:36.112398" elapsed="0.420566"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.534958" level="INFO">Attempt 8 of 10</msg>
+<arg>Attempt ${i} of ${max_attempts}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.534343" elapsed="0.000615"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.534958" level="INFO">${random_num1} = 7</msg>
+<var>${random_num1}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.534958" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.536316" level="INFO">${random_num2} = 7</msg>
+<var>${random_num2}</var>
+<arg>random.randint(0, 8)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.535954" elapsed="0.000362"/>
+</kw>
+<kw name="Input Random Number Into Bowls" owner="codechallenge">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.537555" level="INFO">Typing text '7' into text field 'xpath=//input[@id="left_0"]'.</msg>
+<arg>${LEFT_BOWL}</arg>
+<arg>${random_num1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.537555" elapsed="0.102018"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.640568" level="INFO">Typing text '7' into text field 'xpath=//input[@id="right_0"]'.</msg>
+<arg>${RIGHT_BOWL}</arg>
+<arg>${random_num2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.640568" elapsed="0.109132"/>
+</kw>
+<arg>${random_num1}</arg>
+<arg>${random_num2}</arg>
+<status status="PASS" start="2024-07-17T04:34:36.536959" elapsed="0.213775"/>
+</kw>
+<kw name="Click Weigh Button" owner="codechallenge">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.752691" level="INFO">Clicking element 'xpath=//button[@id="weigh"]'.</msg>
+<arg>${WEIGH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.751694" elapsed="0.050864"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:36.750734" elapsed="0.052822"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:36.816600" level="INFO">@{elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.27")&gt; | &lt;selenium.webdr...</msg>
+<var>@{elements}</var>
+<arg>xpath=//div[@id="root"]/div/div[1]/div[5]/ol/li</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.803556" elapsed="0.014041"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-17T04:34:36.818595" level="INFO">${found_fake_bar} = []</msg>
+<var>${found_fake_bar}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-17T04:34:36.818595" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-07-17T04:34:37.003319" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-07-17T04:34:37.004149" level="FAIL">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</msg>
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="FAIL" start="2024-07-17T04:34:36.820589" elapsed="0.195061">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Weighing result element text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.016645" elapsed="0.000000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${found_fake_bar}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.017643" elapsed="0.000000"/>
+</kw>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="45b2841b369532ef512ea321e740a300", element="f.7A1E4D8260BC852651F04BBD508853EA.d.9DB0B37304D2BC249ABA1022D3D754D2.e.27")&gt;</var>
+<status status="FAIL" start="2024-07-17T04:34:36.820100" elapsed="0.197543">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</status>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="FAIL" start="2024-07-17T04:34:36.818595" elapsed="0.200047">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</status>
+</for>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${expected_text}</var>
+<arg>[${random_num1}] &gt; [${random_num2}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.018642" elapsed="0.001064"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Expected text: ${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.019706" elapsed="0.000594"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<arg>Checking text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.021633" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'${expected_text}' == '${text}'">
+<kw name="Log" owner="BuiltIn">
+<arg>Found Fake Gold Bar: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.023628" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${num_in_left_bowl}</var>
+<arg>${LEFT_BOWL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.024287" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@id="coin_${num_in_left_bowl}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.024637" elapsed="0.000000"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.024637" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-17T04:34:37.022637" elapsed="0.003063"/>
+</branch>
+<status status="NOT RUN" start="2024-07-17T04:34:37.022637" elapsed="0.003063"/>
+</if>
+<var name="${text}"/>
+<status status="NOT RUN" start="2024-07-17T04:34:37.021407" elapsed="0.004293"/>
+</iter>
+<var>${text}</var>
+<value>@{found_fake_bar}</value>
+<status status="NOT RUN" start="2024-07-17T04:34:37.020635" elapsed="0.006151"/>
+</for>
+<kw name="Clear Results" owner="codechallenge">
+<status status="NOT RUN" start="2024-07-17T04:34:37.027616" elapsed="0.000000"/>
+</kw>
+<var name="${i}">8</var>
+<status status="FAIL" start="2024-07-17T04:34:36.534343" elapsed="0.493273">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</status>
+</iter>
+<var>${i}</var>
+<value>${max_attempts}</value>
+<status status="FAIL" start="2024-07-17T04:34:33.247305" elapsed="3.780311">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</status>
+</for>
+<kw name="Take Screenshot" owner="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.028613" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Fake bar not found within ${max_attempts} attempts.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.029611" elapsed="0.000177"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>False</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-17T04:34:37.029788" elapsed="0.000820"/>
+</kw>
+<arg>10</arg>
+<status status="FAIL" start="2024-07-17T04:34:33.243198" elapsed="3.787636">UnexpectedAlertPresentException: Alert Text: Inputs are invalid: Both sides have coin(s): 7
+Message: unexpected alert open: {Alert text : Inputs are invalid: Both sides have coin(s): 7}
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF672C5EEB2+31554]
+	(No symbol) [0x00007FF672BD7EE9]
+	(No symbol) [0x00007FF672A9872A]
+	(No symbol) [0x00007FF672B2D146]
+	(No symbol) [0x00007FF672B0CDD3]
+	(No symbol) [0x00007FF672ADA33B]
+	(No symbol) [0x00007FF672ADAED1]
+	GetHandleVerifier [0x00007FF672F68B2D+3217341]
+	GetHandleVerifier [0x00007FF672FB5AF3+3532675]
+	GetHandleVerifier [0x00007FF672FAB0F0+3489152]
+	GetHandleVerifier [0x00007FF672D0E786+750614]
+	(No symbol) [0x00007FF672BE376F]
+	(No symbol) [0x00007FF672BDEB24]
+	(No symbol) [0x00007FF672BDECB2]
+	(No symbol) [0x00007FF672BCE17F]
+	BaseThreadInitThunk [0x00007FFE06837034+20]
+	RtlUserThreadStart [0x00007FFE08082651+33]
+</status>
+</kw>
+<msg time="2024-07-17T04:34:37.030834" level="INFO">${fake_bar_found} = False</msg>
+<var>${fake_bar_found}</var>
+<arg>Repeat Until Fake Bar Found</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-17T04:34:33.241203" elapsed="3.790403"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-07-17T04:34:37.032841" elapsed="2.587807"/>
+</kw>
+<status status="PASS" start="2024-07-17T04:34:27.671965" elapsed="11.949712"/>
+</test>
+<status status="PASS" start="2024-07-17T04:34:27.342369" elapsed="12.281270"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Codechallenge">Codechallenge</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

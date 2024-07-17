@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-16T20:07:38.587290" rpa="false" schemaversion="5">
+<suite id="s1" name="Codechallenge" source="C:\Users\scharles\cyautomation\robot\codechallenge.robot">
+<test id="s1-t1" name="Find Fake Gold Bar" line="8">
+<kw name="Open Browser To Fetch Website" owner="codechallenge">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-07-16T20:07:38.840479" level="FAIL">Variable '${URL}' not found.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="FAIL" start="2024-07-16T20:07:38.840479" elapsed="0.000000">Variable '${URL}' not found.</status>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" start="2024-07-16T20:07:38.841330" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-07-16T20:07:38.839311" elapsed="0.002019">Variable '${URL}' not found.</status>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Reset Bowls" owner="codechallenge">
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.000000"/>
+</kw>
+<kw name="Input Gold Bars" owner="codechallenge">
+<arg>${bar1}</arg>
+<arg>${bar2}</arg>
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.000000"/>
+</kw>
+<kw name="Weigh Gold Bars" owner="codechallenge">
+<var>${result}</var>
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${result}' == 'LEFT'</arg>
+<arg>Fake Bar Found</arg>
+<arg>${bar2}</arg>
+<arg>ELSE IF</arg>
+<arg>'${result}' == 'RIGHT'</arg>
+<arg>Fake Bar Found</arg>
+<arg>${bar1}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.000000"/>
+</kw>
+<var name="${bar2}"/>
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.000000"/>
+</iter>
+<var>${bar2}</var>
+<value>${bar1 + 1}</value>
+<value>9</value>
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.000000"/>
+</for>
+<kw name="Fake Bar Not Found">
+<status status="NOT RUN" start="2024-07-16T20:07:38.843329" elapsed="0.000000"/>
+</kw>
+<kw name="Close Browser" owner="codechallenge">
+<status status="NOT RUN" start="2024-07-16T20:07:38.843329" elapsed="0.000000"/>
+</kw>
+<var name="${bar1}"/>
+<status status="NOT RUN" start="2024-07-16T20:07:38.842328" elapsed="0.001001"/>
+</iter>
+<var>${bar1}</var>
+<value>0</value>
+<value>9</value>
+<status status="NOT RUN" start="2024-07-16T20:07:38.841330" elapsed="0.001999"/>
+</for>
+<status status="FAIL" start="2024-07-16T20:07:38.839311" elapsed="0.004469">Variable '${URL}' not found.</status>
+</test>
+<test id="s1-t2" name="Fake Bar Found" line="21">
+<error>
+<msg time="2024-07-16T20:07:38.846451" level="FAIL">Setting 'Arguments' is not allowed with tests or tasks.</msg>
+<value>[Arguments]</value>
+<status status="FAIL" start="2024-07-16T20:07:38.846451" elapsed="0.000000">Setting 'Arguments' is not allowed with tests or tasks.</status>
+</error>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>id=gold-bar-${fake_bar}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-16T20:07:38.846451" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${alert_text}</var>
+<arg>${ALERT_MESSAGE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-07-16T20:07:38.847453" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-07-16T20:07:38.847453" elapsed="0.000000"/>
+</kw>
+<error>
+<value>[Return]</value>
+<status status="NOT RUN" start="2024-07-16T20:07:38.847453" elapsed="0.000000"/>
+</error>
+<status status="FAIL" start="2024-07-16T20:07:38.845467" elapsed="0.002979">Setting 'Arguments' is not allowed with tests or tasks.</status>
+</test>
+<test id="s1-t3" name="Fake Bar Not Found" line="28">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-16T20:07:38.851441" level="INFO">Fake bar was not found</msg>
+<arg>Fake bar was not found</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-16T20:07:38.850442" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2024-07-16T20:07:38.850442" elapsed="0.000999"/>
+</test>
+<status status="FAIL" start="2024-07-16T20:07:38.591008" elapsed="0.262431"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="2" skip="0" id="s1" name="Codechallenge">Codechallenge</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-07-16T20:07:38.628906" level="WARN">Error in file 'C:\Users\scharles\cyautomation\robot\codechallenge.resource' on line 33: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>
